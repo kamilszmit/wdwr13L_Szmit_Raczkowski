@@ -8,4 +8,6 @@ for {it in 1 .. 100}
 	let wk := 1 - wr;
 	solve h;
 	printf "%f %f %f %f %f\n", it, wr, wk, f, g;
+	print f > f.txt;
+	print g > g.txt;
 }
