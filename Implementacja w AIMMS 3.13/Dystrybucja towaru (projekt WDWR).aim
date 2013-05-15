@@ -1,0 +1,339 @@
+
+MAIN MODEL Initial_Dystrybucja_towaru_(projekt WDWR).amb
+
+  PROCEDURE
+    identifier :  optymalizuj_razem
+    body       :  
+      solve razem;
+      if (razem.ProgramStatus <> 'Optimal') then
+      empty AllVariables
+      endif;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  optymalizuj_koszty
+    body       :  
+      solve Koszty;
+      if (Koszty.ProgramStatus <> 'Optimal') then
+      empty AllVariables
+      endif;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  optymalizuj_ryzyko
+    body       :  
+      solve Ryzyko;
+      if (Ryzyko.ProgramStatus <> 'Optimal') then
+      empty AllVariables
+      endif;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  optymalizuj_odniesienie
+    comment    :  "if (odniesienie.ProgramStatus <> 'Optimal') then
+                   empty AllVariables
+                   endif;"
+    body       :  
+      solve odniesienie;
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  emptyVariables
+    body       :  
+      empty AllVariables;
+
+  ENDPROCEDURE  ;
+
+  DECLARATION SECTION 
+
+    SET:
+       identifier   :  Fabryki
+       index        :  k ;
+
+    SET:
+       identifier   :  Magazyny
+       index        :  m ;
+
+    SET:
+       identifier   :  Klienci
+       index        :  i ;
+
+    PARAMETER:
+       identifier   :  e1
+       index domain :  (k,m) ;
+
+    PARAMETER:
+       identifier   :  e2
+       index domain :  (k,m) ;
+
+    PARAMETER:
+       identifier   :  e3
+       index domain :  (k,m) ;
+
+    VARIABLE:
+       identifier   :  x
+       index domain :  (k,m)
+       range        :  nonnegative ;
+
+    PARAMETER:
+       identifier   :  t1
+       index domain :  (m,i) ;
+
+    PARAMETER:
+       identifier   :  t2
+       index domain :  (m,i) ;
+
+    PARAMETER:
+       identifier   :  t3
+       index domain :  (m,i) ;
+
+    VARIABLE:
+       identifier   :  z
+       index domain :  (m,i)
+       range        :  nonnegative ;
+
+    PARAMETER:
+       identifier   :  w1
+       index domain :  (k,i) ;
+
+    PARAMETER:
+       identifier   :  w2
+       index domain :  (k,i) ;
+
+    PARAMETER:
+       identifier   :  w3
+       index domain :  (k,i) ;
+
+    VARIABLE:
+       identifier   :  r
+       index domain :  (k,i)
+       range        :  nonnegative ;
+
+    PARAMETER:
+       identifier   :  a
+       index domain :  (k) ;
+
+    CONSTRAINT:
+       identifier   :  zp
+       index domain :  (k)
+       definition   :  sum(m,x(k,m)) + sum(i,r(k,i)) <=  a(k) ;
+
+    PARAMETER:
+       identifier   :  b
+       index domain :  (i) ;
+
+    CONSTRAINT:
+       identifier   :  zk
+       index domain :  (i)
+       definition   :  sum(k,r(k,i)) + sum(m,z(m,i)) =  b(i) ;
+
+    PARAMETER:
+       identifier   :  s
+       index domain :  (m) ;
+
+    CONSTRAINT:
+       identifier   :  pm
+       index domain :  (m)
+       definition   :  sum(k,x(k,m))  <= s(m) ;
+
+    CONSTRAINT:
+       identifier   :  mag
+       index domain :  m
+       definition   :  sum(k, x(k,m)) = sum(i, z(m, i)) ;
+
+    PARAMETER:
+       identifier   :  N
+       initial data :  MAXINT ;
+
+    CONSTRAINT:
+       identifier   :  xN
+       index domain :  (k,m)
+       definition   :  x(k,m) <= N * e1(k,m) ;
+
+    CONSTRAINT:
+       identifier   :  zN
+       index domain :  (m,i)
+       definition   :  z(m,i) <= N * t1(m,i) ;
+
+    CONSTRAINT:
+       identifier   :  rN
+       index domain :  (k,i)
+       definition   :  r(k,i) <= N * w1(k,i) ;
+
+    SET:
+       identifier   :  Praw
+       index        :  y ;
+
+    PARAMETER:
+       identifier   :  P
+       index domain :  (y) ;
+
+    VARIABLE:
+       identifier   :  f1
+       definition   :  sum((k,m), x(k,m)*e1(k,m)) + sum((m, i), z(m, i)*t1(m, i)) + sum((k,i), r(k,i)*w1(k,i)) ;
+
+    VARIABLE:
+       identifier   :  f2
+       range        :  nonnegative
+       definition   :  sum((k,m), x(k,m)*e2(k,m)) + sum((m, i), z(m, i)*t2(m, i)) + sum((k,i), r(k,i)*w2(k,i)) ;
+
+    VARIABLE:
+       identifier   :  f3
+       range        :  nonnegative
+       definition   :  sum((k,m), x(k,m)*e3(k,m)) + sum((m, i), z(m, i)*t3(m, i)) + sum((k,i), r(k,i)*w3(k,i)) ;
+
+    VARIABLE:
+       identifier   :  f
+       range        :  free
+       definition   :  P('P1') * f1 + P('P2') * f2 + P('P3') * f3 ;
+
+    VARIABLE:
+       identifier   :  f12p
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  f12n
+       range        :  nonnegative ;
+
+    CONSTRAINT:
+       identifier   :  cf12
+       definition   :  f1 - f2  = f12p - f12n ;
+
+    VARIABLE:
+       identifier   :  f23p
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  f23n
+       range        :  nonnegative ;
+
+    CONSTRAINT:
+       identifier   :  cf23
+       definition   :  f2 - f3  = f23p - f23n ;
+
+    VARIABLE:
+       identifier   :  f13p
+       range        :  nonnegative ;
+
+    VARIABLE:
+       identifier   :  f13n
+       range        :  nonnegative ;
+
+    CONSTRAINT:
+       identifier   :  cf13
+       definition   :  f1 - f3  = f13p - f13n ;
+
+    VARIABLE:
+       identifier   :  g
+       definition   :  2 * ((f12p + f12n) * P('P1') * P('P2') + (f23p + f23n) * P('P2') * P('P3') + (f13p + f13n) * P('P1') * P('P3'))
+       comment      :  "2 * (abs(f1 - f2) * P('P1') * P('P2') + abs(f2 - f3) * P('P2') * P('P3') + abs(f1 - f3) * P('P1') * P('P3'))" ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  Koszty
+       objective    :  f
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  Ryzyko
+       objective    :  g
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  LP ;
+
+    VARIABLE:
+       identifier   :  q
+       range        :  free
+       definition   :  f + g ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  razem
+       objective    :  q
+       direction    :  minimize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  Automatic ;
+
+    VARIABLE:
+       identifier   :  u
+       range        :  free ;
+
+    CONSTRAINT:
+       identifier   :  ou
+       definition   :  u <= u1 ;
+
+    CONSTRAINT:
+       identifier   :  ou2
+       definition   :  u <= u2 ;
+
+    VARIABLE:
+       identifier   :  u1
+       range        :  free ;
+
+    VARIABLE:
+       identifier   :  u2
+       range        :  free ;
+
+    CONSTRAINT:
+       identifier   :  ou1a
+       definition   :  u1 <= 000.1 * ((f - 10)/(10 - 5)) + 1 ;
+
+    CONSTRAINT:
+       identifier   :  ou2a
+       definition   :  u2 <= 0.001 * ((g - 5)/(5 - 0)) + 1 ;
+
+    CONSTRAINT:
+       identifier   :  ou1b
+       definition   :  u1 <= (f - 5)/(10 - 5) ;
+
+    CONSTRAINT:
+       identifier   :  ou2b
+       definition   :  u2 <= (g - 0)/(5 - 0) ;
+
+    CONSTRAINT:
+       identifier   :  ou1c
+       definition   :  u1 <= 1000*((f - 5)/(10 - 5)) ;
+
+    CONSTRAINT:
+       identifier   :  ou2c
+       definition   :  u2 <= 1000*((g - 0)/(5 - 0)) ;
+
+    VARIABLE:
+       identifier   :  v
+       range        :  free
+       definition   :  u + 0.001 * (u1 + u2) ;
+
+    MATHEMATICAL PROGRAM:
+       identifier   :  odniesienie
+       objective    :  v
+       direction    :  maximize
+       constraints  :  AllConstraints
+       variables    :  AllVariables
+       type         :  LP ;
+
+  ENDSECTION  ;
+
+  PROCEDURE
+    identifier :  MainInitialization
+
+  ENDPROCEDURE  ;
+
+  PROCEDURE
+    identifier :  MainTermination
+    body       :  
+      if ( CaseSaveAll( confirm:2 ) = 1 ) then
+          return 1 ;
+      else
+          return 0 ;
+      endif ;
+
+  ENDPROCEDURE  ;
+
+ENDMODEL Initial_Dystrybucja_towaru_(projekt WDWR).amb ;
