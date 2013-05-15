@@ -1,0 +1,11 @@
+reset;
+option solver cplex;
+model Model.mod;
+data Dane.dat;
+for {it in 1 .. 100}
+{
+	let wr := 0.01*it;
+	let wk := 1 - wr;
+	solve h;
+	printf "%f %f %f %f %f\n", it, wr, wk, f, g;
+}
