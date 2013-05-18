@@ -3,6 +3,7 @@ MAIN MODEL Initial_Dystrybucja_towaru_(projekt WDWR).amb
 
   PROCEDURE
     identifier :  optymalizuj_razem
+    comment    :  "Minimalizuje sumr"
     body       :  
       solve razem;
       if (razem.ProgramStatus <> 'Optimal') then
@@ -13,6 +14,7 @@ MAIN MODEL Initial_Dystrybucja_towaru_(projekt WDWR).amb
 
   PROCEDURE
     identifier :  optymalizuj_koszty
+    comment    :  "Minimalizuje miar"
     body       :  
       solve Koszty;
       if (Koszty.ProgramStatus <> 'Optimal') then
@@ -23,21 +25,12 @@ MAIN MODEL Initial_Dystrybucja_towaru_(projekt WDWR).amb
 
   PROCEDURE
     identifier :  optymalizuj_ryzyko
+    comment    :  "Minimalizuje ÿÿ"
     body       :  
       solve Ryzyko;
       if (Ryzyko.ProgramStatus <> 'Optimal') then
       empty AllVariables
       endif;
-
-  ENDPROCEDURE  ;
-
-  PROCEDURE
-    identifier :  optymalizuj_odniesienie
-    comment    :  "if (odniesienie.ProgramStatus <> 'Optimal') then
-                   empty AllVariables
-                   endif;"
-    body       :  
-      solve odniesienie;
 
   ENDPROCEDURE  ;
 
@@ -260,63 +253,6 @@ MAIN MODEL Initial_Dystrybucja_towaru_(projekt WDWR).amb
        constraints  :  AllConstraints
        variables    :  AllVariables
        type         :  Automatic ;
-
-    VARIABLE:
-       identifier   :  u
-       range        :  free ;
-
-    CONSTRAINT:
-       identifier   :  ou
-       definition   :  u <= u1 ;
-
-    CONSTRAINT:
-       identifier   :  ou2
-       definition   :  u <= u2 ;
-
-    VARIABLE:
-       identifier   :  u1
-       range        :  free ;
-
-    VARIABLE:
-       identifier   :  u2
-       range        :  free ;
-
-    CONSTRAINT:
-       identifier   :  ou1a
-       definition   :  u1 <= 000.1 * ((f - 10)/(10 - 5)) + 1 ;
-
-    CONSTRAINT:
-       identifier   :  ou2a
-       definition   :  u2 <= 0.001 * ((g - 5)/(5 - 0)) + 1 ;
-
-    CONSTRAINT:
-       identifier   :  ou1b
-       definition   :  u1 <= (f - 5)/(10 - 5) ;
-
-    CONSTRAINT:
-       identifier   :  ou2b
-       definition   :  u2 <= (g - 0)/(5 - 0) ;
-
-    CONSTRAINT:
-       identifier   :  ou1c
-       definition   :  u1 <= 1000*((f - 5)/(10 - 5)) ;
-
-    CONSTRAINT:
-       identifier   :  ou2c
-       definition   :  u2 <= 1000*((g - 0)/(5 - 0)) ;
-
-    VARIABLE:
-       identifier   :  v
-       range        :  free
-       definition   :  u + 0.001 * (u1 + u2) ;
-
-    MATHEMATICAL PROGRAM:
-       identifier   :  odniesienie
-       objective    :  v
-       direction    :  maximize
-       constraints  :  AllConstraints
-       variables    :  AllVariables
-       type         :  LP ;
 
   ENDSECTION  ;
 

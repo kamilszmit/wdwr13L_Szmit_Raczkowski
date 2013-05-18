@@ -1,4 +1,8 @@
-Warning at line 1 in user-defined function section "optymalizuj_odniesienie".
-After 47 iterations CPLEX 12.5 concluded that odniesienie is unbounded.
-Warning at line 1 in user-defined function section "optymalizuj_odniesienie".
-After 45 iterations CPLEX 12.5 concluded that odniesienie is unbounded.
+Warning at line 1 in user-defined function section "optymalizuj_razem".
+After zero iterations CPLEX 12.5 concluded that razem is infeasible.
+Warning at line 1 in user-defined function section "optymalizuj_razem".
+After zero iterations CPLEX 12.5 concluded that razem is infeasible.
+Warning at line 1 in user-defined function section "optymalizuj_ryzyko".
+After zero iterations CPLEX 12.5 concluded that Ryzyko is infeasible.
+Warning at line 1 in user-defined function section "optymalizuj_koszty".
+After zero iterations CPLEX 12.5 concluded that Koszty is infeasible.
