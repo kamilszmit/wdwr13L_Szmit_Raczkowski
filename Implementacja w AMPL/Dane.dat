@@ -1,7 +1,7 @@
 # Plik danych
-set DOSTAWCY := F1 F2;
+set FABRYKI := F1 F2;
 set MAGAZYNY := M1 M2 M3 M4;
-set ODBIORCY := K1 K2 K3 K4 ;
+set KLIENCI := K1 K2 K3 K4 ;
 param e1 : 	M1		M2 		M3 		M4 :=
 	F1   	0.5 	2   	0.3 	2
 	F2   	0   	0.4 	1.6 	0.3;
