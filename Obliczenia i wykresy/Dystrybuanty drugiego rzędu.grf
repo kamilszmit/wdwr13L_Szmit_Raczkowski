@@ -1,0 +1,107 @@
+;This file was created by Graph (http://www.padowan.dk)
+;Do not change this file from other programs.
+[Graph]
+Version = 4.4.2.542
+MinVersion = 2.5
+OS = Windows NT 6.2 
+
+[Axes]
+xMin = -13.7454250539799
+xMax = 568.719386697277
+xTickUnit = 50
+xGridUnit = 50
+yMin = -241.695620721959
+yMax = 340.769191029299
+yTickUnit = 50
+yGridUnit = 50
+AxesColor = clBlue
+GridColor = 0x00FF9999
+ShowLegend = 1
+Radian = 1
+
+[Func1]
+FuncType = 0
+y = 0
+To = 101
+Color = clRed
+EndPoint = 1
+
+[Func2]
+FuncType = 0
+y = 0.2x - 20.2
+From = 101
+To = 114
+Color = clRed
+StartPoint = 2
+EndPoint = 1
+
+[Func3]
+FuncType = 0
+y = 0.8x - 88.6
+From = 114
+To = 496.5
+Color = clRed
+StartPoint = 2
+EndPoint = 1
+
+[Func4]
+FuncType = 0
+y = x - 190.5
+From = 496.5
+Color = clRed
+StartPoint = 2
+
+[Func5]
+FuncType = 0
+y = 0
+To = 262.6555555555555555555555555555555555555555555555555
+Color = clLime
+EndPoint = 1
+
+[Func6]
+FuncType = 0
+y = x - 262.66
+From = 262.65555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
+Color = clLime
+StartPoint = 2
+
+[Func7]
+FuncType = 0
+y = 0
+To = 244.5
+Color = clPurple
+EndPoint = 1
+
+[Func8]
+FuncType = 0
+y = 0.2x - 48.9
+From = 244.5
+To = 252.5
+Color = clPurple
+StartPoint = 2
+EndPoint = 1
+
+[Func9]
+FuncType = 0
+y = 0.8x - 200.4
+From = 252.5
+To = 268
+Color = clPurple
+StartPoint = 2
+EndPoint = 1
+
+[Func10]
+FuncType = 0
+y = x - 255.6
+From = 268
+Color = clPurple
+StartPoint = 2
+
+[Data]
+TextLabelCount = 0
+FuncCount = 10
+PointSeriesCount = 0
+ShadeCount = 0
+RelationCount = 0
+OleObjectCount = 0
+
