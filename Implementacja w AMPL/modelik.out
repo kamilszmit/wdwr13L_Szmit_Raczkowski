@@ -1,0 +1,130 @@
+Problem:    modelik
+Rows:       55
+Columns:    43
+Non-zeros:  198
+Status:     OPTIMAL
+Objective:  h = 187.83866 (MINimum)
+
+   No.   Row name   St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 zp[F1]       NU           150                         150      -0.81822 
+     2 zp[F2]       B             65                         200 
+     3 zk[K1]       NS            70            70             =       1.35813 
+     4 zk[K2]       NS            50            50             =       2.01795 
+     5 zk[K3]       NS            60            60             =       1.37948 
+     6 zk[K4]       NS            35            35             =        1.2979 
+     7 pm[M1]       B              0                          70 
+     8 pm[M2]       B             20                          50 
+     9 pm[M3]       B             50                         100 
+    10 pm[M4]       NU            40                          40     -0.339756 
+    11 mag[M1]      NS             0            -0             =      0.958528 
+    12 mag[M2]      NS             0            -0             =      0.739708 
+    13 mag[M3]      NS             0            -0             =       1.49805 
+    14 mag[M4]      NS             0            -0             =      0.979564 
+    15 xN[F1,M1]    B              0                      500000 
+    16 xN[F1,M2]    B              0                      2e+006 
+    17 xN[F1,M3]    B             45                      300000 
+    18 xN[F1,M4]    B              0                      2e+006 
+    19 xN[F2,M1]    NU             0                          -0     -0.958528 
+    20 xN[F2,M2]    B             20                      400000 
+    21 xN[F2,M3]    B              5                    1.6e+006 
+    22 xN[F2,M4]    B             40                      300000 
+    23 zN[M1,K1]    NU             0                          -0       -0.3996 
+    24 zN[M1,K2]    B              0                      400000 
+    25 zN[M1,K3]    B              0                    1.2e+006 
+    26 zN[M1,K4]    B              0                      200000 
+    27 zN[M2,K1]    B              0                      1e+006 
+    28 zN[M2,K2]    B              0                    1.6e+006 
+    29 zN[M2,K3]    B             20                      500000 
+    30 zN[M2,K4]    B              0                    1.4e+006 
+    31 zN[M3,K1]    B              0                          -0 
+    32 zN[M3,K2]    B             50                      200000 
+    33 zN[M3,K3]    B              0                      2e+006 
+    34 zN[M3,K4]    B              0                          -0 
+    35 zN[M4,K1]    NU             0                          -0     -0.378564 
+    36 zN[M4,K2]    NU             0                          -0      -1.03838 
+    37 zN[M4,K3]    B             40                      200000 
+    38 zN[M4,K4]    B              0                    1.5e+006 
+    39 rN[F1,K1]    B             70                      200000 
+    40 rN[F1,K2]    NU             0                          -0      -1.19973 
+    41 rN[F1,K3]    B              0                    1.6e+006 
+    42 rN[F1,K4]    B             35                      500000 
+    43 rN[F2,K1]    B              0                      2e+006 
+    44 rN[F2,K2]    NU             0                          -0      -2.01795 
+    45 rN[F2,K3]    NU             0                          -0      -1.37948 
+    46 rN[F2,K4]    NU             0                          -0       -1.2979 
+    47 ogrtof1      NS             0            -0             =       0.19948 
+    48 ogrtof2      NS             0            -0             =       0.20012 
+    49 ogrtof3      NS             0            -0             =        0.5994 
+    50 sumaf        NS             0            -0             =         0.999 
+    51 cf12         NS             0            -0             =        8e-005 
+    52 cf23         NS             0            -0             =      -0.00024 
+    53 cf13         NS             0            -0             =       0.00024 
+    54 sumag        NS             0            -0             =         0.001 
+    55 h            B        187.839                             
+
+   No. Column name  St   Activity     Lower bound   Upper bound    Marginal
+------ ------------ -- ------------- ------------- ------------- -------------
+     1 x[F1,M1]     NL             0             0                    0.679192 
+     2 x[F1,M2]     NL             0             0                     1.43661 
+     3 x[F1,M3]     B             45             0               
+     4 x[F1,M4]     NL             0             0                     1.45656 
+     5 x[F2,M1]     B              0             0               
+     6 x[F2,M2]     B             20             0               
+     7 x[F2,M3]     B              5             0               
+     8 x[F2,M4]     B             40             0               
+     9 z[M1,K1]     B              0             0               
+    10 z[M2,K1]     NL             0             0                    0.520184 
+    11 z[M3,K1]     NL             0             0                    0.139924 
+    12 z[M4,K1]     B              0             0               
+    13 z[M1,K2]     B              0             0               
+    14 z[M2,K2]     NL             0             0                    0.339788 
+    15 z[M3,K2]     B             50             0               
+    16 z[M4,K2]     B              0             0               
+    17 z[M1,K3]     NL             0             0                    0.857604 
+    18 z[M2,K3]     B             20             0               
+    19 z[M3,K3]     NL             0             0                     1.85651 
+    20 z[M4,K3]     B             40             0               
+    21 z[M1,K4]     NL             0             0                    0.340524 
+    22 z[M2,K4]     NL             0             0                     1.09999 
+    23 z[M3,K4]     NL             0             0                    0.200152 
+    24 z[M4,K4]     NL             0             0                    0.920008 
+    25 r[F1,K1]     B             70             0               
+    26 r[F1,K2]     B              0             0               
+    27 r[F1,K3]     NL             0             0                    0.837112 
+    28 r[F1,K4]     B             35             0               
+    29 r[F2,K1]     NL             0             0                     0.13986 
+    30 r[F2,K2]     B              0             0               
+    31 r[F2,K3]     B              0             0               
+    32 r[F2,K4]     B              0             0               
+    33 f1           B            101                             
+    34 f2           B          496.5                             
+    35 f3           B            114                             
+    36 f            B          187.9                             
+    37 g            B         126.56                             
+    38 f12p         NL             0             0                     0.00016 
+    39 f12n         B          395.5             0               
+    40 f23p         B          382.5             0               
+    41 f23n         NL             0             0                     0.00048 
+    42 f13p         NL             0             0                     0.00048 
+    43 f13n         B             13             0               
+
+Karush-Kuhn-Tucker optimality conditions:
+
+KKT.PE: max.abs.err = 1.42e-014 on row 47
+        max.rel.err = 7.00e-017 on row 47
+        High quality
+
+KKT.PB: max.abs.err = 0.00e+000 on row 0
+        max.rel.err = 0.00e+000 on row 0
+        High quality
+
+KKT.DE: max.abs.err = 4.44e-016 on column 2
+        max.rel.err = 8.30e-017 on column 2
+        High quality
+
+KKT.DB: max.abs.err = 0.00e+000 on row 0
+        max.rel.err = 0.00e+000 on row 0
+        High quality
+
+End of output
