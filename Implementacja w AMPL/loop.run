@@ -10,4 +10,5 @@ for {it in 1 .. 1000}
 	printf "%f %f %f %f %f\n", it, wr, wk, f, g;
 	print f > f.txt;
 	print g > g.txt;
+	print f1, f3, f2 > punkty.txt;
 }
